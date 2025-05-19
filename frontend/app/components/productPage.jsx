@@ -1,6 +1,23 @@
-import ProductCard from "./ProductCard";
+"use client";
+
+import { useEffect, useState } from "react";
+import axios from "axios";
+import ProductCard from "./productCard";
 
 export default function ProductPage() {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:8000/products")
+      .then((response) => {
+        setProducts(response.data.products);
+      })
+      .catch((error) => {
+        console.error("Error fetching products:", error);
+      });
+  }, []);
+
   return (
     <div className="container my-5">
       <div className="row mb-4">
@@ -23,54 +40,16 @@ export default function ProductPage() {
       </div>
 
       <div className="row g-4">
-        <div className="col-md-4">
-          <ProductCard
-            productName="Various Electronic Devices"
-            category="Electronics"
-            stockNumber="343"
-            imageUrl="https://picsum.photos/id/26/367/267"
-          />
-        </div>
-        <div className="col-md-4">
-          <ProductCard
-            productName="Laptop"
-            category="Electronics"
-            stockNumber="315"
-            imageUrl="https://picsum.photos/id/6/367/267"
-          />
-        </div>
-        <div className="col-md-4">
-          <ProductCard
-            productName="Silverware - Forks"
-            category="Dishware"
-            stockNumber="423"
-            imageUrl="https://picsum.photos/id/23/367/267"
-          />
-        </div>
-        <div className="col-md-4">
-          <ProductCard
-            productName="Camera Parts"
-            category="Photograhpy"
-            stockNumber="897"
-            imageUrl="https://picsum.photos/id/36/367/267"
-          />
-        </div>
-        <div className="col-md-4">
-          <ProductCard
-            productName="Desk"
-            category="Office Furnitire"
-            stockNumber="120"
-            imageUrl="https://picsum.photos/id/60/367/267"
-          />
-        </div>
-        <div className="col-md-4">
-          <ProductCard
-            productName="Video Game Controller"
-            category="Video Game Accessories"
-            stockNumber="761"
-            imageUrl="https://picsum.photos/id/96/367/267"
-          />
-        </div>
+        {products.map((product, index) => (
+          <div className="col-md-4" key={index}>
+            <ProductCard
+              productName={product.name}
+              category={product.category}
+              price={product.price}
+              imageUrl={"https://picsum.photos/200/200"}
+            />
+          </div>
+        ))}
       </div>
     </div>
   );

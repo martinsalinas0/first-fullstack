@@ -1,7 +1,7 @@
 export default function ProductCard({
   productName,
   category,
-  stockNumber,
+  price,
   imageUrl,
 }) {
   return (
@@ -11,7 +11,7 @@ export default function ProductCard({
           <h6 className="card-title mt-2">
             Category: <strong>{category}</strong>
           </h6>
-          <h3 className="card-title m-1">{stockNumber}</h3>
+          <h3 className="card-title m-1">{price}</h3>
         </div>
 
         <div className="d-flex justify-content-center">
