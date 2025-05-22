@@ -17,10 +17,6 @@ const ReviewSchema = mongoose.Schema(
       type: String,
       required: false,
     },
-    category: {
-      type: String,
-      required: true,
-    },
     datePosted: {
       type: Date,
       default: Date.now,

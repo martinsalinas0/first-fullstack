@@ -15,11 +15,11 @@ app.use(
   })
 );
 
-const mainRoutes = require("./routes/main.js");
+//const mainRoutes = require("./routes/main.js");
 const productRoutes = require('./routes/products.route.js')
 
 // app.use(mainRoutes);
-app.use(productRoutes)
+app.use('/api', productRoutes)
 app.listen(8000, () => {
   console.log("Node.js listening on port " + 8000);
 });
