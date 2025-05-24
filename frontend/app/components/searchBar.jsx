@@ -3,6 +3,10 @@ import { useState } from "react";
 export default function SearchBar() {
   const [query, setQuery] = useState("");
 
+
+
+
+  //button for search or should we use autofilter while typing? 
   const handleSearch = () => {
     if (!query || query.trim() === "") {
       alert("Search cannot be empty");
@@ -11,6 +15,8 @@ export default function SearchBar() {
       setQuery("");
     }
   };
+
+
   const handleInput = (event) => {
     setQuery(event.target.value);
   };
