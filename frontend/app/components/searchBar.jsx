@@ -14,7 +14,7 @@ export default function SearchBar() {
   const handleInput = (event) => {
     setQuery(event.target.value);
   };
-
+  
   return (
     <div className="container">
       <div className="input-group">
