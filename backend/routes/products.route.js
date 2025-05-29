@@ -78,7 +78,6 @@ router.get("/product/:productId/reviews", async (req, res) => {
   }
 });
 
-
 //POST /products
 //adds a new product
 router.post("/products", async (req, res) => {
@@ -89,8 +88,6 @@ router.post("/products", async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-
-
 
 router.post("/product/:productId/reviews", async (req, res) => {
   try {

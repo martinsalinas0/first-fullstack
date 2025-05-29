@@ -1,30 +1,16 @@
-import { useEffect, useState } from "react";
-import axios from "axios";
-
-export default function CategoryDropDown() {
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    axios
-      .get("http://localhost:8000/api/products")
-      .then((response) => {
-        setProducts(response.data.products);
-      })
-      .catch((error) => {
-        console.error("Error fetching products:", error);
-      });
-  }, []);
+export default function CategoryDropDown({ categories, onCategoryChange }) {
+  const handleChange = (e) => {
+    onCategoryChange(e.target.value);
+  };
 
   return (
-<div className="container">
-  <select className="form-select">
-    <option value="">Select a category</option>
-    {products.map((product, index) => (
-      <option key={index} value={product.category}>
-        {product.category}
-      </option>
-    ))}
-  </select>
-</div>
+    <select className="form-select" onChange={handleChange} defaultValue="">
+      <option value="">All Categories</option>
+      {categories.map((category, index) => (
+        <option key={index} value={category}>
+          {category}
+        </option>
+      ))}
+    </select>
   );
 }
