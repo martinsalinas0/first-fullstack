@@ -1,1 +1,1 @@
-fullstack appliction  
+fullstack appliction  details
